@@ -1,10 +1,12 @@
-public class Date {
+import javax.lang.model.util.ElementScanner14;
+
+public class Date{
     private int dia, mes, ano;
 
     public void initializeDate() {
-        this.dia = 0;
-        this.mes = 0;
-        this.ano = 0;
+        dia = 0;
+        mes = 0;
+        ano = 0;
     }
 
     // getters
@@ -35,15 +37,18 @@ public class Date {
     }
 
     // verificação
-    public boolean checkDate() {
-        if (dia > 0) {
-            if (mes > 0) {
-                if (ano > 0) {
-                    return true;
-                }
-            }
-        } else {
+    private boolean chekdate (){
+        if ((dia > 0) && (mes > 0) && (ano > 0)){
+            return true;
+        }else
             return false;
-        }
+    }
+    //Impressão data
+    public void printDate (){
+        System.out.println(dia + "/" + mes + "/" + ano);
+    }
+
+    public void printDateExt (){
+        System.out.println("");
     }
 }

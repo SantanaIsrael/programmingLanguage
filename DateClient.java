@@ -11,5 +11,11 @@ public class DateClient {
         dia = teclado.nextInt();
         mes = teclado.nextInt();
         ano = teclado.nextInt();
+        data.setDia(dia);
+        data.setMes(mes);
+        data.setAno(ano);
+        
+        System.out.println("As datas são: " + data.getDia() + data.getMes() + data.getAno());
+
     }
 }
