@@ -22,11 +22,11 @@ public class Date {
     }
 
     // setters
-    public setDia (int dia){
+    public void setDia(int dia) {
         this.dia = dia;
     }
 
-    public setMes (int mes){
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
@@ -36,9 +36,14 @@ public class Date {
 
     // verificação
     public boolean checkDate() {
-        if ((dia && mes && ano) > 0) {
-            return true;
-        } else
+        if (dia > 0) {
+            if (mes > 0) {
+                if (ano > 0) {
+                    return true;
+                }
+            }
+        } else {
             return false;
+        }
     }
 }
