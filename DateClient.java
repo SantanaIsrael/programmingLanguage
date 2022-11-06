@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class DateClient {
     public static void main(String[] args) {
-        int dia, mes, ano;
-
         Date data = new Date();
         Scanner teclado = new Scanner(System.in);
 
@@ -14,5 +12,6 @@ public class DateClient {
 
         data.infoDate();
         data.infoDateExt();
+        teclado.close();
     }
 }

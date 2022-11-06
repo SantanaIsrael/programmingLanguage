@@ -87,6 +87,7 @@ public class naval {
             }
 
         } while (a <= 4);
+        dados_S.close();
     }
     public static void imprimePrenche (char[][] tabuleiro, char[][]jogada){
         

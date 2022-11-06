@@ -1,21 +1,60 @@
+import java.util.Calendar;
+
 public class Contato {
-    private int telefone, dataNascimento;
+    private int dataNascimento;
+    private long telefone;
     private String nome, email;
 
-    void inicializarContato(int telefone, int dataNascimento, String nome, String email){
+    public void incializarContato() {
+        telefone = dataNascimento = 0;
+        nome = email = "Default";
     }
-    void imprimeContato(){
-        System.out.println(nome);
-        System.out.println(telefone);
-        System.out.println(dataNascimento);
-        System.out.println(email);
+
+    // Getters
+    public int getDataNascimento() {
+        return dataNascimento;
     }
-    //int calcularIdade()
-    public void setter(){
-        nome;
-        telefone;
-        dataNascimento;
-        email;
+
+    public long getTelefone() {
+        return telefone;
     }
-    //getter()
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    // set
+    public void setDataNascimento(int dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void imprimirContato() {
+        System.out.println("Nome: " + nome);
+        System.out.println("E-mail: " + email);
+        System.out.println("Idade: " + calcularIdade());
+        System.out.println("Data de nascimento: " + dataNascimento);
+        System.out.println("Contato: " + telefone);
+    }
+
+    public int calcularIdade() {
+        Calendar calendario = Calendar.getInstance();
+        int idade = (dataNascimento % 10000) - calendario.get(Calendar.YEAR);
+        return idade*-1;
+    }
 }
