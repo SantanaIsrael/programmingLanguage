@@ -1,62 +1,88 @@
 public class Date {
-    private int dia, mes, ano;
+    private int day, month, year;
+    private String[] week = { "Sabado", "Domingo", "Segunda", "Terca", "Quarta", "Quinta",
+            "Sexta" };
+    private String[] mesExtenso = { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
 
     public void initializeDate() {
-        dia = 0;
-        mes = 0;
-        ano = 0;
+        day = 1;
+        month = 01;
+        year = 2022;
+    }
+
+    // Construtor da classe
+    public Date(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
 
     // getters
     public int getDia() {
-        return dia;
+        return day;
     }
 
     public int getMes() {
-        return mes;
+        return month;
     }
 
     public int getAno() {
 
-        return ano;
-    }
-
-    // setters
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
+        return year;
     }
 
     // verificação
     private boolean chekdate() {
-        if ((dia > 0) && (mes > 0) && (ano > 0)) {
+        if ((day > 0 || day < 31) && (month > 0 || month < 13) && (year > 0)) {
             return true;
         } else
             return false;
     }
 
+    public boolean isPrevious(Date otherDate) {
+        int year = otherDate.year, month = otherDate.month;
+        if (year < this.year) {
+            return true;
+        } else if (month < this.month) {
+            return true;
+        } else if (day < this.day) {
+            return true;
+        } else
+            return false;
+    }
+
+    public float howManyDays(Date otherDate) {
+        float result;
+        if (isPrevious(otherDate)) {
+            result = this.day - otherDate.day;
+            return result;
+        } else
+            result = otherDate.day - this.day;
+        return result;
+    }
+
+    public String dayOfWeek() {
+        if (chekdate()) {
+            int result = day + 2 * month + (3 * (month + 1) / 5) + year + year / 4 - year / 100 + year / 400 + 2;
+            return week[result % 7];
+        } else
+            return "Erro";
+    }
+
     // Impressão data
     public void infoDate() {
-        if(chekdate()){
-        System.out.println(dia + "/" + mes + "/" + ano);
-        }else
+        if (chekdate()) {
+            System.out.println(day + "/" + month + "/" + year);
+        } else
             System.out.println("Data invalida.");
     }
 
-    public void infoDateExt (){
-        if(chekdate()){
-        String mesExtenso[] = {"Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", 
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
-        System.out.println(dia + " de " + mesExtenso[mes-1] + " de " + ano);
-    } else{
-        System.out.println("Data Invalida.");
+    public void infoDateExt() {
+        if (chekdate()) {
+            System.out.println(day + " de " + mesExtenso[month - 1] + " de " + year);
+        } else {
+            System.out.println("Data Invalida.");
+        }
     }
-}
 }
