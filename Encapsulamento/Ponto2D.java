@@ -1,22 +1,21 @@
 public class Ponto2D {
-    private float x;
-    private float y;
+    private double x;
+    private double y;
 
     // Gettes
-    public float getX() {
+  public double getX() {
         return x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    // Settes
-    public void setX(float x) {
+    //Setter
+    public void setX(double x) {
         this.x = x;
     }
-
-    public void setY(float y) {
+    public void setY(double y) {
         this.y = y;
     }
 

@@ -39,7 +39,7 @@ public class DataConstrutor {
             return false;
     }
 
-    public boolean isPrevious(Date date) {
+    public boolean isPrevious(DataConstrutor date) {
         int year = date.getAno(), month = date.getMes();
         if (year < this.year) {
             return true;
@@ -75,7 +75,7 @@ public class DataConstrutor {
             return "Erro";
     }
 
-    public float howManyDays(Date otherDate) {
+    public float howManyDays(DataConstrutor otherDate) {
         float result;
         if (isPrevious(otherDate)) {
             result = this.day - otherDate.getDia();
