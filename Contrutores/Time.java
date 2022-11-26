@@ -9,6 +9,13 @@ public class Time {
             initialize();
     }
 
+    public Time (int hours){
+        if(hours > 0){
+            this.hours = hours;
+            min = 00;
+        }
+    }
+
     private void initialize() {
         hours = 0;
         min = 0;
@@ -23,13 +30,14 @@ public class Time {
         return min;
     }
 
+    //Verificções
     public boolean isAM() {
         if (hours < 12) {
             return true;
         }
         return false;
     }
-
+    
     public int cron(Time otherHours) {
         int aux;
 

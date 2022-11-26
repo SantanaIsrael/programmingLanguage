@@ -1,12 +1,18 @@
 public class Circulo {
-    private double x, y, raio;
+    private float x, y, raio;
 
-    public Circulo(Double x, Double y, Double raio) {
+    //Construtor
+    public Circulo(float x, float y, float raio) {
         this.x = x;
         this.y = y;
         this.raio = raio;
     }
 
+    public Circulo (float raio){
+        this.raio = raio;
+    }
+
+    //Validação
     private boolean validaCirculo() {
         if (raio > 0) {
             return true;
@@ -14,10 +20,9 @@ public class Circulo {
             return false;
     }
 
-    public String printCircle(){
+    public String toString(){
         String result;
-        result = "Perimetro " + perimetro();
-        result += "Area " + area();
+        result = "Perimetro " + perimetro() + "\n" + "Area " + area();
         return result;
 
     }
@@ -33,7 +38,7 @@ public class Circulo {
         return (float) (2 * 3.14 * raio);
     }
 
-    public boolean isInnerPoint(Ponto2DConstru ponto) {
+    public boolean isInnerPoint(Ponto2D ponto) {
         if(area() > ponto.getY() || area() > ponto.getX()){
             return true;
         }else

@@ -1,20 +1,21 @@
-public class DataConstrutor {
+public class Data {
     private int day, month, year;
     private String[] week = { "Sabado", "Domingo", "Segunda", "Terca", "Quarta", "Quinta",
             "Sexta" };
     private String[] mesExtenso = { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
             "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
 
-    public DataConstrutor(int day, int month, int year) {
+    // Construtores
+    public Data(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
-    public void initializeDate() {
+    public Data() {
         day = 1;
         month = 01;
-        year = 2022;
+        year = 1970;
     }
 
     // getters
@@ -31,7 +32,7 @@ public class DataConstrutor {
         return year;
     }
 
-    // verificação
+    //Métodos de validade
     private boolean chekdate() {
         if ((day > 0 || day < 31) && (month > 0 || month < 13) && (year > 0)) {
             return true;
@@ -39,7 +40,14 @@ public class DataConstrutor {
             return false;
     }
 
-    public boolean isPrevious(DataConstrutor date) {
+    private boolean chekdate(int day, int month, int year) {
+        if ((day > 0 || day < 31) && (month > 0 || month < 13) && (year > 0)) {
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean isPrevious(Data date) {
         int year = date.getAno(), month = date.getMes();
         if (year < this.year) {
             return true;
@@ -51,7 +59,18 @@ public class DataConstrutor {
             return false;
     }
 
-    // Impressão data
+    public boolean isPrevious(int day, int month, int year) {
+        if (year < this.year) {
+            return true;
+        } else if (month < this.month) {
+            return true;
+        } else if (day < this.day) {
+            return true;
+        } else
+            return false;
+    }
+
+    //Métodos de impressão data
     public void infoDate() {
         if (chekdate()) {
             System.out.println(day + "/" + month + "/" + year);
@@ -74,9 +93,9 @@ public class DataConstrutor {
         } else
             return "Erro";
     }
-
-    public float howManyDays(DataConstrutor otherDate) {
-        float result;
+    //Métodos de verificação de dias
+    public int howManyDays(Data otherDate) {
+        int result;
         if (isPrevious(otherDate)) {
             result = this.day - otherDate.getDia();
             return result;
@@ -84,4 +103,23 @@ public class DataConstrutor {
             result = otherDate.getDia() - this.day;
         return result;
     }
+
+    public int howManyDays(int day, int month, int year) {
+        int aux = 0;
+        if (chekdate(day, month, year)) {
+            if (isPrevious(day, month, year)) {
+                aux = Math.abs(this.month - month) + Math.abs(this.day - day);
+                if (this.year - year != -1) {
+                    aux += Math.abs(this.year - year) * 365;
+                }
+            }
+            aux = Math.abs(this.day - day) + (Math.abs(this.month - month) * 30);
+            if (this.year - year != -1) {
+                aux += Math.abs(this.year - year) * 365;
+            }
+        }
+        return aux;
+    }
+    //Métodos setData
+
 }

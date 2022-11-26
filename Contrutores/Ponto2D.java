@@ -1,32 +1,32 @@
-public class Ponto2DConstru{
-    private double x;
-    private double y;
+public class Ponto2D{
+    private final double X;
+    private final double Y;
 
     //Construtor
-    public Ponto2DConstru (double x, double y){
-        this.x = x;
-        this.y = y;
+    public Ponto2D (double x, double y){
+        this.X = x;
+        this.Y = y;
     }
 
     // Gettes
   public double getX(){
-        return x;
+        return X;
     }
 
     public double getY() {
-        return y;
+        return Y;
     }
 
     // X e Y está no eixo
     private boolean isEixoX() {
-        if (x == 0.0) {
+        if (X == 0.0) {
             return true;
         } else
             return false;
     }
 
     private boolean isEixoY() {
-        if (y == 0.0) {
+        if (Y == 0.0) {
             return true;
         } else
             return false;
@@ -43,23 +43,23 @@ public class Ponto2DConstru{
     public int quadrante() {
         if (isEixo()) {
             return 0;
-        } else if (x > 0 && y > 0) {
+        } else if (X > 0 && Y > 0) {
             return 1;
-        } else if (x < 0 && y < 0) {
+        } else if (X < 0 && Y < 0) {
             return 3;
-        } else if (x < 0 && y > 0) {
+        } else if (X < 0 && Y > 0) {
             return 2;
         } else
             return 4;
     }
 
-    public double distancia(Ponto2DConstru a, Ponto2DConstru b) {
+    public double distancia(Ponto2D b) {
         double distancia;
-        if (a.isEixo() && b.isEixo()) {
+        if (isEixo() && b.isEixo()) {
             return 0;
         } else {
-            distancia = (double)Math.sqrt(((a.getX() - b.getX()) * (a.getX() - b.getX())) + 
-            ((a.getY() - b.getY()) * (a.getY() - b.getY())));
+            distancia = (double)Math.sqrt(((X - b.getX()) * (X - b.getX())) + 
+            ((Y - b.getY()) * (Y - b.getY())));
             return distancia;
         }
     }
