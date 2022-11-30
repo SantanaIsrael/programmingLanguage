@@ -1,12 +1,12 @@
 public class Time {
-    private int hours, min, sec;
-   
-    //Construtores
+    private int hours, minutes, seconds;
+
+    // Construtores
     public Time(int hours, int min, int seg) {
         if (isValid()) {
             this.hours = hours;
-            this.min = min;
-            this.sec = seg;
+            this.minutes = min;
+            this.seconds = seg;
         } else
             inicitialize();
     }
@@ -14,8 +14,8 @@ public class Time {
     public Time(int hours, int min) {
         if (isValid()) {
             this.hours = hours;
-            this.min = min;
-            sec = 00;
+            this.minutes = min;
+            seconds = 00;
         } else
             inicitialize();
     }
@@ -23,12 +23,12 @@ public class Time {
     public Time(int hours) {
         if (isValid()) {
             this.hours = hours;
-            min = 00;
+            minutes = 00;
         } else
             inicitialize();
     }
 
-    public Time (){
+    public Time() {
         inicitialize();
     }
 
@@ -38,18 +38,18 @@ public class Time {
     }
 
     public int getMin() {
-        return min;
+        return minutes;
     }
 
-    public int getSeg(){
-        return sec;
+    public int getSeg() {
+        return seconds;
     }
 
-    //Inicializador
+    // Inicializador
     private void inicitialize() {
-        hours = min = sec = 0;
+        hours = minutes = seconds = 0;
     }
-    
+
     // Verificações
     public boolean isAM() {
         if (hours < 12) {
@@ -62,25 +62,25 @@ public class Time {
         if (hours >= 0 || hours <= 23) {
             return true;
         }
-        if (min <= 60 || min >= 0) {
+        if (minutes <= 60 || minutes >= 0) {
             return true;
         }
-        if (sec <= 60 || sec >= 0) {
+        if (seconds <= 60 || seconds >= 0) {
             return true;
         } else
             return false;
     }
 
-    //Adições e comparações
+    // Adições e comparações
     public int cron(Time otherHours) {
         int aux;
 
         if (otherHours.hours < hours) {
             aux = (24 - (hours - otherHours.hours)) * 3600;
-            if (min < otherHours.min) {
-                aux = aux + ((1440 - ((min - otherHours.min) * -1)) * 60);
+            if (minutes < otherHours.minutes) {
+                aux = aux + ((1440 - ((minutes - otherHours.minutes) * -1)) * 60);
             } else
-                aux += ((min - otherHours.min) - 1440) * 60;
+                aux += ((minutes - otherHours.minutes) - 1440) * 60;
             return aux;
         } else
             aux = (otherHours.hours - hours) * 3600;
@@ -89,27 +89,45 @@ public class Time {
 
     public void addTime(int segundos) {
 
-        sec += segundos % 60;
-        min += segundos/60;
-        hours += min/60;
+        seconds += segundos % 60;
+        minutes += segundos / 60;
+        hours += minutes / 60;
 
-        if (sec > 60 || min >= 60) {
-            sec %= 60;
-            min += sec/60;
-            
-            if (min >= 60) {
-                min %= 60;
-                hours += min / 60;
-                if (hours > 23) {
-                    hours = hours - 23;
-                }
+        while (seconds >= 60 || minutes >= 60) {
+            seconds %= 60;
+            minutes += seconds / 60;
+
+            if (minutes >= 60) {
+                minutes %= 60;
+                hours += minutes / 60;
             }
+        }
+        if (hours > 23) {
+            hours = hours - 23;
         }
     }
 
-    //Impressão
+    public void addTime(int minutos, int segundos) {
+        seconds += segundos % 60;
+        minutes += (segundos / 60) + minutos;
+        hours += minutes / 60;
 
-    public String toString(){
-        return hours + ":" + min + ":" + sec;
+        while (seconds > 60 || minutes >= 60) {
+            seconds %= 60;
+            minutes += (seconds / 60) + (minutos%60);
+
+            if (minutes >= 60) {
+                minutes %= 60;
+                hours += minutes / 60;
+            }
+        }
+        if (hours > 23) {
+            hours = hours - 23;
+        }
+    }
+
+    // Impressão
+    public String toString() {
+        return hours + ":" + minutes + ":" + seconds;
     }
 }
