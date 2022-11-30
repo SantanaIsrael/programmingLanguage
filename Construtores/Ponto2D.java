@@ -1,6 +1,6 @@
 public class Ponto2D{
-    private final double X;
-    private final double Y;
+    private double X;
+    private double Y;
 
     //Construtor
     public Ponto2D (double x, double y){

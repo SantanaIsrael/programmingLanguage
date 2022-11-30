@@ -1,5 +1,5 @@
 public class Time {
-    private int hours, min;
+    private int hours, min, seg;
 
     public Time(int hours, int min) {
         if (hours > 0) {
@@ -51,5 +51,25 @@ public class Time {
         } else
             aux = (otherHours.hours - hours) * 3600;
         return aux += ((otherHours.hours - hours) * 60);
+    }
+
+    public void addSeconds(int segundos) {
+
+        seg += segundos % 60;
+        min += segundos/60;
+        hours += min/60;
+
+        if (seg > 60 || min >= 60) {
+            seg %= 60;
+            min += seg/60;
+            
+            if (min >= 60) {
+                min %= 60;
+                hours += min / 60;
+                if (hours > 23) {
+                    hours = hours - 23;
+                }
+            }
+        }
     }
 }

@@ -1,13 +1,13 @@
 public class CirculoClient {
     public static void main(String[] args) {
 
-        Ponto2D ponto = new Ponto2D(5.9, 3.9);
+        Ponto2D ponto = new Ponto2D(3.75, 5.89);
         Circulo[] circulo = new Circulo[2];
 
         circulo[0] = new Circulo(4.98f);
         circulo[1] = new Circulo(5.52f);
 
-        if (circulo[0].isInnerPoint(ponto)){
+        if (circulo[0].isInnerPoint(ponto)) {
             System.out.println("Circulo e interno ao ponto enviado");
         } else {
             System.out.println("Circulo e externo ao ponto enviado.");

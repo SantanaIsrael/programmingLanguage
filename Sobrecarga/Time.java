@@ -1,11 +1,12 @@
 public class Time {
-    private int hours, min, seg;
-
+    private int hours, min, sec;
+   
+    //Construtores
     public Time(int hours, int min, int seg) {
         if (isValid()) {
             this.hours = hours;
             this.min = min;
-            this.seg = seg;
+            this.sec = seg;
         } else
             inicitialize();
     }
@@ -14,7 +15,7 @@ public class Time {
         if (isValid()) {
             this.hours = hours;
             this.min = min;
-            seg = 00;
+            sec = 00;
         } else
             inicitialize();
     }
@@ -23,12 +24,12 @@ public class Time {
         if (isValid()) {
             this.hours = hours;
             min = 00;
-        }else
+        } else
             inicitialize();
     }
 
-    private void inicitialize() {
-        hours = min = seg = 0;
+    public Time (){
+        inicitialize();
     }
 
     // Getter
@@ -40,7 +41,16 @@ public class Time {
         return min;
     }
 
-    // Verificções
+    public int getSeg(){
+        return sec;
+    }
+
+    //Inicializador
+    private void inicitialize() {
+        hours = min = sec = 0;
+    }
+    
+    // Verificações
     public boolean isAM() {
         if (hours < 12) {
             return true;
@@ -55,12 +65,13 @@ public class Time {
         if (min <= 60 || min >= 0) {
             return true;
         }
-        if (seg <= 60 || seg >= 0) {
+        if (sec <= 60 || sec >= 0) {
             return true;
         } else
             return false;
     }
 
+    //Adições e comparações
     public int cron(Time otherHours) {
         int aux;
 
@@ -76,24 +87,29 @@ public class Time {
         return aux += ((otherHours.hours - hours) * 60);
     }
 
-    public void addSeconds(int segundos) {
-        int hora, minuto, seg;
+    public void addTime(int segundos) {
 
-        seg = segundos % 60;
-        minuto = segundos / 60;
-        hora = minuto / 60;
+        sec += segundos % 60;
+        min += segundos/60;
+        hours += min/60;
 
-        if (seg > 60) {
-            seg %= 60;
-            minuto += seg / 60;
-            if (minuto > 60) {
-                minuto %= 60;
-                hora += minuto / 60;
-                if (hora > 23) {
-                    hora = hora - 23;
+        if (sec > 60 || min >= 60) {
+            sec %= 60;
+            min += sec/60;
+            
+            if (min >= 60) {
+                min %= 60;
+                hours += min / 60;
+                if (hours > 23) {
+                    hours = hours - 23;
                 }
             }
         }
-        System.out.println(hora + ":" + minuto + ":" + seg);
+    }
+
+    //Impressão
+
+    public String toString(){
+        return hours + ":" + min + ":" + sec;
     }
 }
