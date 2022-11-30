@@ -6,7 +6,8 @@ public class Contato {
     private String nome, email;
 
     public void incializarContato() {
-        telefone = dataNascimento = 0;
+        telefone = 0;
+        dataNascimento = 0;
         nome = email = "Default";
     }
 
