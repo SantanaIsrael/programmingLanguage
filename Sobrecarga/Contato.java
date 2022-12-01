@@ -3,22 +3,17 @@ import java.util.Calendar;
 public class Contato {
     private int dataNascimento, telefone;
     private String nome, email;
-    
-    //Construtores
+
+    // Construtores
     public Contato() {
         email = nome = "Default";
         telefone = dataNascimento = 0;
     }
 
-    public Contato(int dataNascimento, int telefone, String nome, String email) {
+    public Contato(String nome, int telefone, String email, int dataNascimento) {
         this.nome = nome;
         this.email = email;
         this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-    }
-
-    public Contato(String nome, int telefone) {
-        this.nome = nome;
         this.telefone = telefone;
     }
 
@@ -26,6 +21,11 @@ public class Contato {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Contato(String nome, int telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
     }
 
     // Getters
@@ -45,17 +45,18 @@ public class Contato {
         return nome;
     }
 
-    //Impressões
-    public void imprimirContato() {
-        System.out.println("Nome: " + nome + "E-mail: \n" + email + "Contato: \n" + telefone);
-        if (dataNascimento != 0) {
-            System.out.printf("Data de nascimento: " + dataNascimento + "\n"
-                    + "Idade: " + calcularIdade());
+    // Impressões
+    public String toString() {
+        String result = "Nome: " + nome + "\n" + "E-mail: " + email + "\n" + "Contato: " + telefone;
+        
+        if (email != null) {
+            if (dataNascimento != 0) {
+                return result + "\n" + "Data de nascimento: " + dataNascimento + "\n" + "Idade: " + calcularIdade();
+            }
+            return result;
         }
-    }
 
-    public void imprimeContatoSimples() {
-        System.out.println("Nome: " + nome + "\n" + "Telefone: " + telefone);
+        return "Nome: " + nome +"\n" + "Telefone: " + telefone;
     }
 
     private int calcularIdade() {

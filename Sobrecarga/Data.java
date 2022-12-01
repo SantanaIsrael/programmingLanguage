@@ -12,6 +12,12 @@ public class Data {
         this.year = year;
     }
 
+    public Data (Data otherDate){
+        day = otherDate.day;
+        month = otherDate.month;
+        year = otherDate.year;
+    }
+
     public Data() {
         day = 1;
         month = 01;
@@ -93,6 +99,7 @@ public class Data {
         } else
             return "Erro";
     }
+    
     //Métodos de verificação de dias
     public int howManyDays(Data otherDate) {
         int result;
@@ -120,6 +127,4 @@ public class Data {
         }
         return aux;
     }
-    //Métodos setData
-
 }

@@ -32,6 +32,12 @@ public class Time {
         inicitialize();
     }
 
+    public Time (Time hora){
+        hours = hora.hours;
+        minutes = hora.minutes;
+        seconds = hora.seconds;
+    }
+
     // Getter
     public int getHours() {
         return hours;
@@ -125,6 +131,26 @@ public class Time {
             hours = hours - 23;
         }
     }
+
+    public void addTime(int hora, int minutos, int segundos) {
+        seconds += segundos % 60;
+        minutes += (segundos / 60) + minutos;
+        hours += hora / 60;
+
+        while (seconds > 60 || minutes >= 60) {
+            seconds %= 60;
+            minutes += (seconds / 60) + (minutos%60);
+
+            if (minutes >= 60) {
+                minutes %= 60;
+                hours += minutes / 60;
+            }
+        }
+        if (hours > 23) {
+            hours = hours - 23;
+        }
+    }
+
 
     // Impressão
     public String toString() {
