@@ -3,11 +3,11 @@ public class RoboSimples {
     private int posicaoXAtual, posicaoYAtual;
     private char direcaoAtual;
 
-    RoboSimples(String nome, int px, int py, char d) {
+    RoboSimples(String nome, int posicaox, int posicaoy, char direcao) {
         nomeDoRobo = nome;
-        posicaoXAtual = px;
-        posicaoYAtual = py;
-        direcaoAtual = d;
+        posicaoXAtual = posicaox;
+        posicaoYAtual = posicaoy;
+        direcaoAtual = direcao;
     }
 
     RoboSimples(String nome) {
@@ -43,6 +43,13 @@ public class RoboSimples {
         str = str + "Direcao do robo: " + direcaoAtual;
 
         return str;
+    }
+
+    private boolean validaRobo() {
+        if (nomeDoRobo != null)
+            if (direcaoAtual == 'N' || direcaoAtual == 'S' || direcaoAtual == 'E' || direcaoAtual == 'O')
+                return true;
+        return false;
     }
 
 }
