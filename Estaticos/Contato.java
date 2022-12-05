@@ -3,7 +3,7 @@ import java.util.Calendar;
 public class Contato {
     private int dataNascimento, telefone;
     private String nome, email;
-    private static int numeroContatos = 0;
+    static private int numeroContatos = 0;
 
     // Construtores
     public Contato() {

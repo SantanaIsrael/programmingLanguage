@@ -1,8 +1,8 @@
 public class Data {
     private int day, month, year;
-    private static String[] week = { "Sabado", "Domingo", "Segunda", "Terca", "Quarta", "Quinta",
+    static private String[] week = { "Sabado", "Domingo", "Segunda", "Terca", "Quarta", "Quinta",
             "Sexta" };
-    private static String[] mesExtenso = { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
+    static private String[] mesExtenso = { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
             "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
 
     // Construtores
