@@ -16,14 +16,17 @@ public class Contato {
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.telefone = telefone;
+        numeroContatos++;
     }
 
     public Contato(String nome, int telefone, String email) {
         this(nome, telefone, email, 0);
+        numeroContatos++;
     }
 
     public Contato(String nome, int telefone) {
         this(nome, telefone, null);
+        numeroContatos++;
     }
 
     // Getters
