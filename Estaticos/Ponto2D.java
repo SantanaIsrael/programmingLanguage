@@ -77,4 +77,12 @@ public class Ponto2D {
     public float distancia(float x, float y){
         return (x == 0 && y == 0) ? 0 : (float)Math.sqrt((x-y) * (x-y));
     }
+
+    public static float distance(Ponto2D p1, Ponto2D p2){
+    return (float) Math.sqrt(((p1.x - p2.x) * (p1.x - p2.x)) + ((p1.y - p2.y) * (p1.y - p2.y)));
+    }
+
+    public static float distance(Ponto2D p1){
+        
+    }
 }

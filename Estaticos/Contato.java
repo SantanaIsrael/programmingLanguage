@@ -57,7 +57,7 @@ public class Contato {
         return "Nome: " + nome +"\n" + "Telefone: " + telefone;
     }
 
-    public static string printQtd(){
+    public static int printQtd(){
         return numeroContatos;
     }
 

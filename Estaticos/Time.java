@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class Time {
     private int hours, minutes, seconds;
 
@@ -77,6 +79,16 @@ public class Time {
             return false;
     }
 
+    public static boolean isAm (Time t){
+        if(t.hours < 12) return true;
+        return false;
+    }
+
+    public static boolean isPM (Time t){
+        if(t.hours > 12) return true;
+        return false;
+    }
+
     // Adições e comparações
     public int cron(Time otherHours) {
         int aux;
@@ -116,11 +128,11 @@ public class Time {
     public void addTime(int minutos, int segundos) {
         seconds += segundos % 60;
         minutes += (segundos / 60) + minutos;
-        hours += minutes / 60;
+        hours = hours + (minutes / 60);
 
         while (seconds > 60 || minutes >= 60) {
             seconds %= 60;
-            minutes += (seconds / 60) + (minutos%60);
+            minutes = minutes + (seconds / 60) + (minutos%60);
 
             if (minutes >= 60) {
                 minutes %= 60;
@@ -128,7 +140,7 @@ public class Time {
             }
         }
         if (hours > 23) {
-            hours = hours - 23;
+            hours -= 23;
         }
     }
 
@@ -151,19 +163,18 @@ public class Time {
         }
     }
 
-    public static String difTime(Time t1, Time t2){ 
+    public static String diffTime(Time t1, Time t2){ 
         return "hora: " + (t1.hours - t2.hours) + "minuto: " + (t1.minutes - t2.minutes) 
                 + "segundo(s): " + (t1.seconds - t2.seconds);
     }
-    public static boolean isAm (Time t){
-        if(t.hours < 12) return true;
-        return false;
+
+    public static String diffTime(Time t){
+        Calendar h = Calendar.getInstance();
+
+        return (t.hours - h.get(Calendar.HOUR)) + " : " + (t.minutes - h.get(Calendar.MINUTE)) 
+        + " : " + (t.seconds - h.get(Calendar.SECOND));
     }
 
-    public static boolean isPM (Time t){
-        if(t.hours > 12) return true;
-        return false;
-    }
     // Impressão
     public String toString() {
         return hours + ":" + minutes + ":" + seconds;
