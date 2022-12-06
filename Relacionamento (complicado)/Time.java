@@ -1,4 +1,4 @@
-public class Time{
+public class Time {
     private int hours, minutes, seconds;
 
     // Construtores
@@ -93,7 +93,7 @@ public class Time{
         return aux += ((otherHours.hours - hours) * 60);
     }
 
-    public void addSeconds(int segundos) {
+    public void addTime(int segundos) {
 
         seconds += segundos % 60;
         minutes += segundos / 60;
@@ -112,6 +112,45 @@ public class Time{
             hours = hours - 23;
         }
     }
+
+    public void addTime(int minutos, int segundos) {
+        seconds += segundos % 60;
+        minutes += (segundos / 60) + minutos;
+        hours += minutes / 60;
+
+        while (seconds > 60 || minutes >= 60) {
+            seconds %= 60;
+            minutes += (seconds / 60) + (minutos%60);
+
+            if (minutes >= 60) {
+                minutes %= 60;
+                hours += minutes / 60;
+            }
+        }
+        if (hours > 23) {
+            hours = hours - 23;
+        }
+    }
+
+    public void addTime(int hora, int minutos, int segundos) {
+        seconds += segundos % 60;
+        minutes += (segundos / 60) + minutos;
+        hours += hora / 60;
+
+        while (seconds > 60 || minutes >= 60) {
+            seconds %= 60;
+            minutes += (seconds / 60) + (minutos%60);
+
+            if (minutes >= 60) {
+                minutes %= 60;
+                hours += minutes / 60;
+            }
+        }
+        if (hours > 23) {
+            hours = hours - 23;
+        }
+    }
+
 
     // Impressão
     public String toString() {
