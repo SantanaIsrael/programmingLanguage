@@ -1,3 +1,4 @@
+package base;
 public class Time {
     private int hours, minutes, seconds;
 
@@ -155,5 +156,15 @@ public class Time {
     // Impressão
     public String toString() {
         return hours + ":" + minutes + ":" + seconds;
+    }
+
+    public boolean equals(Time obj){
+        if(this == obj)
+        return true;
+        if(hours == obj.getHours())
+            if(minutes == obj.getMin())
+                if(seconds == obj.getSeg())
+                    return true;
+        return false;
     }
 }

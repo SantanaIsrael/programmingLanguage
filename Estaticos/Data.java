@@ -157,6 +157,7 @@ public class Data {
     }
 
     public static String dayOfWeek(Data d){
+        //retorna de dia da semana pela data passada por parametro
         if(chekdate(d.day, d.month, d.year)){
         int result = d.day + 2 * d.month + (3 * (d.month + 1) / 5) + d.year + d.year / 4 - d.year / 100 + d.year / 400 + 2;
         return week[result % 7];
@@ -165,10 +166,12 @@ public class Data {
     }
 
     public static String dayToPrintShort(Data d){
+        //retornar a data no formato dd/mm/aaaa
         return d.day + "/" + d.month + "/" + d.year;
     }
 
     public static String dayPrintLong(Data d){
+        //retorna a data por extenso
         if(chekdate(d.day, d.month, d.year)){
             return d.day +  " de " + mesExtenso[d.month-1] + " de " + d.year;
         }
