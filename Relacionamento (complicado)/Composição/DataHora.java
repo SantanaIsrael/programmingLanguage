@@ -1,4 +1,4 @@
-package base.Agregação;
+package Composição;
 import base.Data;
 import base.Time;
 
@@ -7,9 +7,9 @@ public class DataHora {
     private Data date;
     private Time time;
 
-    public DataHora(Data data, Time time) {
-        this.date = data;
-        this.time = time;
+    public DataHora(int dia, int mes, int ano, int hora, int min, int segundos) {
+        date = new Data(dia, mes, ano);
+        time = new Time(hora, min, segundos);
     }
 
     public Data getDateData() {
@@ -22,7 +22,7 @@ public class DataHora {
 
     // Impressão
     public String toString() {
-        return "Hoje e: " + date.dayToPrintShort() + ", e sao: " + time.toString();
+        return "Hoje e: " + date.dayToPrintShort() + ", e sao: " + time;
     }
 
     public boolean equals(DataHora obj) {

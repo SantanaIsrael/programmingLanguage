@@ -1,4 +1,4 @@
-package base.Agregação;
+package Agregação;
 import base.Data;
 import base.Time;
 

@@ -7,17 +7,19 @@ public class Data {
 
     // Construtores
     public Data(int day, int month, int year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        if (chekdate()) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
     }
 
-    public Data (Data otherDate){
+    public Data(Data otherDate) {
         this(otherDate.day, otherDate.month, otherDate.year);
     }
 
     public Data() {
-        this(01,01,1970);
+        this(01, 01, 1970);
     }
 
     // getters
@@ -33,7 +35,7 @@ public class Data {
         return year;
     }
 
-    //Métodos de validade
+    // Métodos de validade
     private boolean chekdate() {
         if ((day > 0 || day < 31) && (month > 0 || month < 13) && (year > 0)) {
             return true;
@@ -71,7 +73,7 @@ public class Data {
             return false;
     }
 
-    //Métodos de impressão data
+    // Métodos de impressão data
     public void infoDate() {
         if (chekdate()) {
             System.out.println(day + "/" + month + "/" + year);
@@ -94,8 +96,8 @@ public class Data {
         } else
             return "Erro";
     }
-    
-    //Métodos de verificação de dias
+
+    // Métodos de verificação de dias
     public int howManyDays(Data otherDate) {
         int result;
         if (isPrevious(otherDate)) {

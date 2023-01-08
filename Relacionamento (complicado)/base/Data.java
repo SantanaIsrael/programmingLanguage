@@ -34,8 +34,18 @@ public class Data {
         return year;
     }
 
+    public void setDay(int day) {
+        this.day = day;
+    }
+    public static void setMesExtenso(String[] mesExtenso) {
+        Data.mesExtenso = mesExtenso;
+    }
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
     // Métodos de validade
-    private boolean chekdate() {
+    protected boolean chekdate() {
         if ((day > 0 || day < 31) && (month > 0 || month < 13) && (year > 0)) {
             return true;
         } else

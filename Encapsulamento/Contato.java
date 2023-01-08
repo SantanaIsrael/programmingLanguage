@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public class Contato {
-    private int dataNascimento;
+    protected int dataNascimento;
     private long telefone;
     private String nome, email;
 

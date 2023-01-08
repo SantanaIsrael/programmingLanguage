@@ -1,4 +1,4 @@
-package base.Composição;
+package Agregação;
 import base.Data;
 import base.Time;
 
@@ -7,9 +7,9 @@ public class DataHora {
     private Data date;
     private Time time;
 
-    public DataHora(int dia, int mes, int ano, int hora, int min, int segundos) {
-        date = new Data(dia, mes, ano);
-        time = new Time(hora, min, segundos);
+    public DataHora(Data data, Time time) {
+        this.date = data;
+        this.time = time;
     }
 
     public Data getDateData() {
