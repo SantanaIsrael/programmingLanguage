@@ -1,4 +1,4 @@
 # LP3
 java/python
 
-Aqui estão todos os exercicios que estão sendo desenvolvidos na disciplina de Linguagem de programação III.
+Foram hospedados todos os exercicios desenvolvidos ao longo do tempo de duração da disciplina. Aqui estão todos os meus fracassos e acertos 😄
